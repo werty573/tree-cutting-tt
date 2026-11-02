@@ -397,6 +397,83 @@ details p { margin: 0 0 1.6rem; color: var(--muted); max-width: 62ch; }
   .storm-ctas .storm-num { width: 100%; }
 }
 
+/* phone polish */
+html { -webkit-tap-highlight-color: transparent; }
+a, button, .chip, .slice, summary { touch-action: manipulation; }
+.mbar { display: none; }
+@media (max-width: 767px) {
+  body { font-size: 1rem; padding-bottom: calc(5.2rem + env(safe-area-inset-bottom)); }
+  .nav-wrap { top: max(.6rem, env(safe-area-inset-top)); }
+  .fab { display: none; }
+
+  /* thumb-reach action bar */
+  .mbar {
+    position: fixed; z-index: 75; left: .75rem; right: .75rem; bottom: calc(.75rem + env(safe-area-inset-bottom));
+    display: grid; grid-template-columns: 1fr 1.25fr; gap: .4rem; padding: .4rem; border-radius: 99px;
+    background: color-mix(in srgb, var(--surface) 80%, transparent); border: 1px solid var(--line);
+    backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
+    box-shadow: 0 18px 40px -18px rgba(15,30,23,.45);
+    transition: transform .6s var(--ease);
+  }
+  .mbar a { height: 3.1rem; border-radius: 99px; display: flex; align-items: center; justify-content: center; gap: .5rem; text-decoration: none; font-weight: 700; font-size: .98rem; }
+  .mbar a i { font-size: 1.2rem; }
+  .mbar-call { background: var(--surface-2); color: var(--ink); }
+  .mbar-quote { background: var(--accent); color: var(--accent-ink); }
+  .mbar a:active { transform: scale(.97); }
+  .menu-open .mbar, .mbar.is-away { transform: translateY(160%); }
+
+  /* menu: solid, big targets */
+  .menu { background: var(--bg); justify-content: flex-start; padding-top: 7rem; }
+  .menu li a { padding: .3rem 0; }
+
+  /* hero: keep the climber in frame, CTAs full width */
+  .hero { min-height: 100svh; }
+  .hero-media img { object-position: 62% 25%; }
+  .hero-shade { background: linear-gradient(180deg, rgba(10,22,16,.45) 0%, rgba(10,22,16,.1) 28%, rgba(10,22,16,.55) 58%, rgba(10,22,16,.92) 100%); }
+  .hero-inner { padding-bottom: 2.25rem; }
+  .hero-title { font-size: clamp(2.6rem, 11.5vw, 3.4rem); margin-bottom: 1.1rem; }
+  .hero-sub { font-size: 1rem; margin-bottom: 1.5rem; }
+  .hero-ctas { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .hero-ctas .btn { justify-content: center; padding: 0 .5rem 0 1rem; font-size: .95rem; }
+  .hero-ctas .btn-glass { padding: 0 1rem; }
+  .hero-ctas .btn-island { display: none; }
+
+  .areas { padding: 1.1rem 0; }
+  .marquee-track { animation-duration: 34s; }
+  .manifesto { padding: 4.5rem 0; }
+  .scrub { font-size: clamp(1.6rem, 7vw, 2rem); }
+  .h2 { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .services .lede { margin-bottom: 2rem; font-size: 1rem; }
+  .services, .why, .reviews { padding-bottom: 5rem; }
+
+  /* estimator: price first so it stays visible while tapping options */
+  .estimate { padding: 5rem 0; }
+  .estimator { margin-top: 1.75rem; }
+  .est-out { order: -1; padding: 1.5rem; }
+  .est-price { font-size: clamp(2rem, 10vw, 2.6rem); margin-bottom: .6rem; }
+  .est-note { min-height: 0; margin-bottom: 1.2rem; font-size: .95rem; }
+  .est-out .btn { display: none; }
+  .est-fine { margin-top: 0; }
+  .est-form { padding: 1.5rem; gap: 1.3rem; }
+  .chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; }
+  .chip { padding: .75rem .3rem; font-size: .88rem; text-align: center; white-space: nowrap; }
+
+  .process { padding: 4.5rem 0; }
+  .process-steps { gap: 3.5rem; }
+  .pstep-img { margin-bottom: 1.1rem; border-radius: 1.25rem; }
+  .rev p { font-size: 1.45rem; }
+  .rev-nav { margin-top: 1.75rem; }
+  .storm { padding: 5.5rem 0; }
+  .storm-media img { opacity: .6; }
+  .storm .btn { width: 100%; justify-content: center; }
+  .faq { padding: 5rem 0; }
+  summary { padding: 1.2rem 0; font-size: 1.1rem; }
+  .quote-title { font-size: clamp(2.8rem, 13vw, 3.6rem); }
+  .quote-form { padding: 1.25rem; }
+  .field input, .field select, .field textarea { font-size: 16px; padding: .95rem 1rem; }
+  .footer-mark { font-size: 13vw; margin-bottom: 2rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
   .js .reveal { opacity: 1; transform: none; filter: none; }

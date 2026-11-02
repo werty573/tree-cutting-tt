@@ -79,6 +79,15 @@
     node.replaceWith(frag);
   });
 
+  /* phone action bar: hidden while the hero or the quote form already shows the same buttons */
+  const mbar = document.querySelector('.mbar');
+  const seen = new Set();
+  const barIO = new IntersectionObserver((entries) => {
+    entries.forEach((en) => (en.isIntersecting ? seen.add(en.target) : seen.delete(en.target)));
+    mbar.classList.toggle('is-away', seen.size > 0);
+  }, { threshold: 0.12 });
+  ['.hero', '#quote', '.footer'].forEach((s) => barIO.observe(document.querySelector(s)));
+
   /* services accordion */
   const slices = [...document.querySelectorAll('.slice')];
   const open = (s) => slices.forEach((x) => x.classList.toggle('is-open', x === s));
